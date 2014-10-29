@@ -1,0 +1,104 @@
+﻿<UFSJ>
+  <language Name="English" LCID="1033" Local="United States" langVer="0.9.8">
+    <Author>
+      <Name>UFASoft Technology</Name>
+      <Contact>http://UFSJ.weebly.com/blog/</Contact>
+    </Author>
+  </language>
+  <strings>
+    <item Key='#B.1#'>Split</item>
+    <item Key='#B.2#'>Join</item>
+    <item Key='#B.3#'>Calculate</item>
+    <item Key='#B.4#'>Compare</item>
+    <item Key='#B.5#'>Manage</item>
+    <item Key='#B.6#'>Open Output Directory</item>
+    <item Key='#B.7#'>Open Output File</item>
+    <item Key='#B.8#'>View Summary</item>
+    <item Key='#B.9#'>OK</item>
+    <item Key='#B.A#'>Apply</item>
+    <item Key='#B.B#'>Browse</item>
+    <item Key='#B.C#'>Yes</item>
+    <item Key='#B.D#'>No</item>
+    <item Key='#B.E#'>Abort</item>
+    <item Key='#B.F#'>Retry</item>
+    <item Key='#B.10#'>Ignore</item>
+    <item Key='#B.11#'>Cancel</item>
+    <item Key='#B.12#'>View</item>
+    <item Key='#B.13#'>Copy</item>
+    <item Key='#B.14#'>Paste</item>
+    <item Key='#B.15#'>Convert</item>
+    <item Key='#B.16#'>Refresh</item>
+    <item Key='#B.17#'>Exit</item>
+    <item Key='#B.18#'>Save</item>
+    <item Key='#B.19#'>Close</item>
+    <item Key='#B.1A#'>Hide</item>
+    <item Key='#B.1B#'>Cancel</item>
+    <item Key="#B.1C#">Previous</item>
+    <item Key="#B.1D#">Next</item>
+
+    <item Key='#H.1#'>ABOUT</item>
+    <item Key='#H.2#'>COMPARE</item>
+    <item Key='#H.3#'>CREDITS</item>
+    <item Key='#H.4#' xml:space='preserve'> FILE </item>
+    <item Key='#H.5#'>CHECKSUM</item>
+    <item Key='#H.6#'>JOIN</item>
+    <item Key='#H.7#'>OPTIONS</item>
+    <item Key='#H.8#'>SPLIT</item>
+    <item Key='#H.9#'>SUPPORT</item>
+    <item Key='#H.A#'>TASK</item>
+    <item Key="#S.01#">Active</item>
+    <item Key="#S.02#">Always on top</item>
+    <item Key="#S.03#">Appearance</item>
+    <item Key="#S.04#">Associate With .001</item>
+    <item Key="#S.05#">Association</item>
+    <item Key="#S.06#">Automaticaly Determined</item>
+    <item Key="#S.07#">Delete Part Files on Succes</item>
+    <item Key="#S.08#">Delete Source file on Succes</item>
+    <item Key="#S.09#">Formats</item>
+    <item Key="#S.0A#">FREE</item>
+    <item Key="#S.0B#">Generate Batch Joinner</item>
+    <item Key="#S.0C#">Hide Progress</item>
+    <item Key="#S.0D#">Intergrate shell context menu</item>
+    <item Key="#S.0E#">Name</item>
+    <item Key="#S.0F#">of all part</item>
+    <item Key="#S.10#">only for first</item>
+    <item Key="#S.11#">only for last</item>
+    <item Key="#S.12#">only for number</item>
+    <item Key="#S.13#">Options</item>
+    <item Key="#S.14#">Output File (Optional)</item>
+    <item Key="#S.15#">Part</item>
+    <item Key="#S.16#">Present</item>
+    <item Key="#S.17#">Preview</item>
+    <item Key="#S.18#">Ready</item>
+    <item Key="#S.19#">Save Result in separated file</item>
+    <item Key="#S.1A#">Scripts</item>
+    <item Key="#S.1B#">Second File</item>
+    <item Key="#S.1C#">Settings</item>
+    <item Key="#S.1D#">Show Information</item>
+    <item Key="#S.1E#">Source File</item>
+    <item Key="#S.1F#">Split into</item>
+    <item Key="#S.20#">Start w\o open UFSJ</item>
+    <item Key="#S.21#">Value</item>
+    <item Key="#S.22#">Version</item>
+    <item Key="#S.23#">Portability</item>
+    <item Key='#S.24#'>Add Language</item>
+    <item Key="#S.25#">Language</item>
+    <item Key="#S.26#">Local</item>
+    <item Key="#S.27#">ID</item>
+    <item Key="#S.28#">Translated By</item>
+    <item Key="#S.29#">Contact</item>
+    <item Key="#S.2A#">Source</item>
+    <item Key="#S.2B#">Translated</item>
+    <item Key="#S.2C#">Auto Save</item>
+
+    <item Key="#D.01#">Information</item>
+    <item Key="#D.02#">Error</item>
+    <item Key="#D.03#">Warning</item>
+
+    <item Key="#M.01#" xml:space="preserve">set this UFSJ portable, to do this,  ensure that you use the copied executable, and have permission read and write of folder, then click CONVERT to make it portable.</item>
+    <item Key="#M.02#">Executable is not ready to be Portable</item>
+    <item Key="#M.03#">Already Portabled</item>
+    <item Key="#M.04#">Not ready, detected inside install directory</item>
+    <item Key="#M.05#">Ready to Convert</item>
+  </strings>
+</UFSJ>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="UFSJ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="PreDefines">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="item">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:string" use="required" />
+                  <xs:attribute name="Val" type="xs:string" use="required" />
+                  <xs:attribute name="By" type="xs:unsignedByte" use="required" />
+                  <xs:attribute name="Show" type="xs:boolean" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="UserDefines" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

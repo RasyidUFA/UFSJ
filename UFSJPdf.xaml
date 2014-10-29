@@ -1,0 +1,110 @@
+﻿<Window x:Class="UFSJ.UFSJPdf"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="UFSJ PDF 0.4"
+        Height="437.5"
+        Width="404.5">
+    <Window.Background>
+        <SolidColorBrush Color='White' />
+    </Window.Background>
+    <Grid>
+        <TabControl x:Name='tabControl'
+                    SelectedIndex='1'>
+            <TabItem Header='  File  '
+                     Style='{DynamicResource MainMetroTab}'
+                     Background='#FFCA1919'
+                     BorderBrush='Red'
+                     Margin='-2,-2,0,0'>
+                <Grid Background='White' />
+            </TabItem>
+            <TabItem Header='SPLIT'
+                     Style='{DynamicResource NormalMetroTab}'
+                     Margin='0,-2,0,0'>
+                <Grid Background='White'>
+                    <Label Content="Source File"
+                           HorizontalAlignment="Left"
+                           Margin="10,10,0,0"
+                           VerticalAlignment="Top"
+                           Width='70' />
+                    <Label x:Name="splitInSize"
+                           Content="No File"
+                           HorizontalAlignment="Right"
+                           Margin="0,10,70,0"
+                           VerticalAlignment="Top"
+                           HorizontalContentAlignment="Right"
+                           Opacity="0.2"
+                           Width='71' />
+                    <TextBox x:Name="splitInPath"
+                             Margin="10,36,70,0"
+                             Text=""
+                             VerticalAlignment="Top"
+                             Height="24"
+                             UndoLimit="5"
+                             VerticalContentAlignment="Center"
+                             BorderBrush='#FFABADB3'
+                             Background='White'
+                             Foreground='Black'
+                             SelectionBrush='#FF3399FF'
+                             MaxLines="1" />
+                    <Button x:Name="splitInBrowse"
+                            Content="Browse"
+                            HorizontalAlignment="Right"
+                            Height="24"
+                            Margin="0,36,10,0"
+                            VerticalAlignment="Top"
+                            Width="55"
+                            FontSize="11" />
+                    <Label Content="Split into"
+                           HorizontalAlignment="Left"
+                           Margin="10,110,0,0"
+                           VerticalAlignment="Top"
+                           RenderTransformOrigin="0.491,0.5" />
+                    <TextBox x:Name="splitOptSizeT"
+                             HorizontalAlignment="Left"
+                             TextWrapping="Wrap"
+                             Text="1"
+                             VerticalAlignment="Top"
+                             Width="137"
+                             Margin="70,110,0,0"
+                             UndoLimit="5"
+                             Height="27"
+                             VerticalContentAlignment="Center"
+                             Background='White'
+                             BorderBrush='#FFABADB3'
+                             Foreground='Black'
+                             SelectionBrush='#FF3399FF' />
+                    <ComboBox x:Name="splitOptSizeC"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Top"
+                              SelectedIndex="0"
+                              Margin="212,110,0,0"
+                              Height="27"
+                              MaxDropDownHeight="340"
+                              MinHeight="24"
+                              VerticalContentAlignment="Center"
+                              Width="71"
+                              IsEditable="True"
+                              IsReadOnly="True">
+                        <ComboBoxItem x:Name="cSplitPage"
+                                      Content="Page" />
+                        <ComboBoxItem x:Name="cSplitMega"
+                                      Content="MB" />
+                        <ComboBoxItem x:Name="cSplitGiga"
+                                      Content="GB" />
+                        <ComboBoxItem x:Name="cSplitParts"
+                                      Content="Part"
+                                      Background="#FFEDFFF2"
+                                      BorderThickness='0' />
+                    </ComboBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header='JOIN'
+                     HorizontalAlignment='Left'
+                     Width='55'
+                     Style='{DynamicResource NormalMetroTab}'
+                     Margin='0,-2,0,0'>
+                <Grid Background='White' />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

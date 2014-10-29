@@ -1,0 +1,13 @@
+<Schemes>
+  <!--<Scheme MainColor='#FFBF1A1A' SecondColor='#FFFFFFFF' ThirdColor='#FF000000' Name="Red" />
+  <Scheme MainColor='#FFC36F0A' SecondColor='#FFFFFFFF' ThirdColor='#FF000000' Name="Orange"/>
+  <Scheme MainColor='#FF76C923' SecondColor='#FFFFFFFF' ThirdColor='#FF000000' Name="Lime"/>
+  <Scheme MainColor='#FF1B7E1B' SecondColor='#FFFFFFFF' ThirdColor='#FF000000' Name="Green" />
+  <Scheme MainColor='#FF0A91C3' SecondColor='#FFFFFFFF' ThirdColor='#FF000000' Name="Sky" />
+  <Scheme MainColor='#FF1979CA' SecondColor='#FFFFFFFF' ThirdColor='#FF000000' Name="Blue"/>-->
+  <Scheme MainColor='#FF2D4FC1' SecondColor='#FFFFFFFF' ThirdColor='#FF000000' Name="Dark Blue"/>
+  <!--<Scheme MainColor='#FF9D15BB' SecondColor='#FFFFFFFF' ThirdColor='#FF000000' Name="Purple"/>
+  <Scheme MainColor='#FFD8008A' SecondColor='#FFFFFFFF' ThirdColor='#FF000000' Name="Pink"/>-->
+  <!--<Scheme MainColor='#FF555555' SecondColor='#FF5E5E5E' ThirdColor='#FFFFFFFF' Name="Dark"/>
+  <Scheme MainColor='#FFAFAFAF' SecondColor='#FFFFFFFF' ThirdColor='#FFEFEFEF' Name="Light"/>-->
+</Schemes>

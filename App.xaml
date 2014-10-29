@@ -1,0 +1,16 @@
+﻿<Application x:Class="UFSJ.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:t="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Royale"
+             StartupUri="Windows/StartWnd.xaml"
+             Startup='Application_Startup'
+             DispatcherUnhandledException='Application_DispatcherUnhandledException'>
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Metro/Styles/Styles.xaml" />
+                <ResourceDictionary Source='Windows/ResString.xaml' />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

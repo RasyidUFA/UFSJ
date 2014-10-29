@@ -1,0 +1,1710 @@
+﻿<Window xmlns="http://schemas.microsoft.com/netfx/2007/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Drop="Grid_Drop"
+        DragEnter="Grid_DragEnter"
+        x:Name="mainWindow"
+        Title="UFSJ# 1.0"
+        AllowDrop="True"
+        RenderOptions.EdgeMode="Aliased"
+        Height="412"
+        Width="498"
+        Icon="../Resources/STD.ico"
+        x:Class="UFSJ.MainWnd"
+        MinWidth="440"
+        MinHeight="470"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True"
+        BorderThickness="0"
+        ResizeMode="CanMinimize"
+        Loaded="mainWindow_Loaded"
+        SnapsToDevicePixels="True"
+        Deactivated="mainWindow_Deactivated"
+        Background="{DynamicResource Background}"
+        Activated="mainWindow_Activated"
+        Closed="mainWindow_Closed"
+        Closing="mainWindow_Closing"
+        ShowActivated="False"
+        LocationChanged="mainWindow_LocationChanged">
+    <Window.Style>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="Foreground"
+                    Value="{DynamicResource Foreground}" />
+            <Setter Property="Background"
+                    Value="{DynamicResource LightBackground}" />
+            <Setter Property="WindowStyle"
+                    Value="None" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        <Grid>
+                            <Border x:Name="MainBorder"
+                                    BorderThickness="1"
+                                    Background="{DynamicResource LightBackground}"
+                                    BorderBrush="{DynamicResource BorderBrushSelected}">
+                                <DockPanel LastChildFill="True">
+                                    <Border x:Name="PART_TITLEBAR"
+                                            Margin="0,0,0,0"
+                                            Height="32"
+                                            DockPanel.Dock="Top"
+                                            Background="Transparent"
+                                            MouseLeftButtonDown="TITLEBAR_Drag">
+                                        <DockPanel LastChildFill="False"
+                                                   Margin="4,0,0,0">
+                                            <Image Height="24"
+                                                   Width="24"
+                                                   Source="{TemplateBinding Icon}">
+                                                <Image.ContextMenu>
+                                                    <ContextMenu   Style='{DynamicResource StandardContextMenu}'>
+                                                        <MenuItem Header="Close"
+                                                                  Foreground="{DynamicResource Foreground}" />
+                                                        <Separator />
+                                                        <MenuItem Header="Exit"
+                                                                  Foreground="{DynamicResource Foreground}" />
+                                                    </ContextMenu>
+                                                </Image.ContextMenu>
+                                            </Image>
+                                            <TextBlock Margin="4,0,0,4"
+                                                       VerticalAlignment="Center"
+                                                       Foreground="{DynamicResource Foreground}"
+                                                       TextWrapping="NoWrap"
+                                                       Text="{TemplateBinding Title}"
+                                                       FontSize="16" />
+                                            <Button x:Name="PART_CLOSE"
+                                                    DockPanel.Dock="Right"
+                                                    VerticalAlignment="Top"
+                                                    Height="24"
+                                                    Width="36"
+                                                    Style="{DynamicResource MetroCloseButtonStyle}"
+                                                    Click="PART_CLOSE_Click"
+                                                    Margin="0"
+                                                    HorizontalAlignment="Right">
+                                                <Grid Height="20"
+                                                      Width="24">
+                                                    <Path Data="F1M54.0573,47.8776L38.1771,31.9974 54.0547,16.1198C55.7604,14.4141 55.7604,11.6511 54.0573,9.94531 52.3516,8.23962 49.5859,8.23962 47.8802,9.94531L32.0026,25.8229 16.1224,9.94531C14.4167,8.23962 11.6511,8.23962 9.94794,9.94531 8.24219,11.6511 8.24219,14.4141 9.94794,16.1198L25.8255,32 9.94794,47.8776C8.24219,49.5834 8.24219,52.3477 9.94794,54.0534 11.6511,55.7572 14.4167,55.7585 16.1224,54.0534L32.0026,38.1745 47.8802,54.0534C49.5859,55.7585 52.3516,55.7572 54.0573,54.0534 55.7604,52.3477 55.763,49.5834 54.0573,47.8776z"
+                                                          Stretch="Uniform"
+                                                          Fill="{DynamicResource Foreground}"
+                                                          Width="10.5"
+                                                          Margin="0,0,0,0"
+                                                          Height="12.209" />
+                                                </Grid>
+                                            </Button>
+                                            <Button x:Name="PART_MAXIMIZE_RESTORE"
+                                                    DockPanel.Dock="Right"
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Top"
+                                                    Height="24"
+                                                    Width="36"
+                                                    Style="{DynamicResource MetroWindowButtonStyle}"
+                                                    Click="PART_MAXIMIZE_RESTORE_Click"
+                                                    Margin="0"
+                                                    IsEnabled="False">
+                                                <Grid Height="20"
+                                                      Width="24">
+                                                    <Path x:Name="RestorePath"
+                                                          Data=" M4.3685131,23.127279L4.3685131,47.283243 47.117023,47.283243 47.117023,23.127279z M0,10.684L53.755001,10.684 53.755001,51.668001 0,51.668001z M8.5679998,0L58.668022,0 64,0 64,5.6864691 64,45.317999 58.668022,45.317999 58.668022,5.6864691 8.5679998,5.6864691z"
+                                                          Stretch="Uniform"
+                                                          Fill="{DynamicResource Foreground}"
+                                                          Width="13.876"
+                                                          Margin="0,0,0,0"
+                                                          Height="10.375" />
+                                                </Grid>
+                                            </Button>
+                                            <Button x:Name="PART_MINIMIZE"
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Top"
+                                                    DockPanel.Dock="Right"
+                                                    Height="24"
+                                                    Width="36"
+                                                    Style="{DynamicResource MetroWindowButtonStyle}"
+                                                    VerticalContentAlignment="Bottom"
+                                                    Click="PART_MINIMIZE_Click"
+                                                    Margin="0">
+                                                <Grid Height="20"
+                                                      Width="24">
+                                                    <Path Data="M0,20L53.333,20 53.333,8.888 0,8.888z"
+                                                          Stretch="Uniform"
+                                                          Fill="{DynamicResource Foreground}"
+                                                          Width="12.75"
+                                                          Margin="5.125,10,6.125,2.438"
+                                                          Height="Auto" />
+                                                </Grid>
+                                            </Button>
+                                            <!-- M4.3685131,23.127279L4.3685131,47.283243 47.117023,47.283243 47.117023,23.127279z M0,10.684L53.755001,10.684 53.755001,51.668001 0,51.668001z M8.5679998,0L58.668022,0 64,0 64,5.6864691 64,45.317999 58.668022,45.317999 58.668022,5.6864691 8.5679998,5.6864691z-->
+                                            <Button x:Name="PART_SET"
+                                                    DockPanel.Dock="Right"
+                                                    VerticalAlignment="Top"
+                                                    Height="32"
+                                                    Style="{DynamicResource MetroWindowButtonStyle}"
+                                                    HorizontalAlignment="Center"
+                                                    Margin="4,0,4,0"
+                                                    Padding="4,1,4,1"
+                                                    Content="{DynamicResource #H.7#}"
+                                                    Foreground="{DynamicResource Foreground}"
+                                                    Click="PART_SET_Click" />
+                                        </DockPanel>
+                                    </Border>
+                                    <AdornerDecorator DockPanel.Dock="Bottom">
+                                        <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                          Content="{TemplateBinding Content}"
+                                                          ContentStringFormat="{TemplateBinding ContentStringFormat}" />
+                                    </AdornerDecorator>
+                                </DockPanel>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="WindowState"
+                                     Value="Maximized">
+                                <Setter TargetName="RestorePath"
+                                        Property="Data">
+                                    <Setter.Value>M4.3685131,23.127279L4.3685131,47.283243 47.117023,47.283243 47.117023,23.127279z M0,10.684L53.755001,10.684 53.755001,51.668001 0,51.668001z M8.5679998,0L58.668022,0 64,0 64,5.6864691 64,45.317999 58.668022,45.317999 58.668022,5.6864691 8.5679998,5.6864691z</Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="WindowState"
+                                     Value="Normal">
+                                <Setter TargetName="RestorePath"
+                                        Property="Data">
+                                    <Setter.Value>F1M0,0L0,9 9,9 9,0 0,0 0,3 8,3 8,8 1,8 1,3z</Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="ResizeMode"
+                         Value="CanResizeWithGrip">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Window}">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding Background}">
+                                    <Grid>
+                                        <AdornerDecorator>
+                                            <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                              Content="{TemplateBinding Content}"
+                                                              ContentStringFormat="{TemplateBinding ContentStringFormat}" />
+                                        </AdornerDecorator>
+                                        <ResizeGrip x:Name="WindowResizeGrip"
+                                                    HorizontalAlignment="Right"
+                                                    IsTabStop="False"
+                                                    Visibility="Collapsed"
+                                                    VerticalAlignment="Bottom" />
+                                    </Grid>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="ResizeMode"
+                                                       Value="CanResizeWithGrip" />
+                                            <Condition Property="WindowState"
+                                                       Value="Normal" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="Visibility"
+                                                TargetName="WindowResizeGrip"
+                                                Value="Visible" />
+                                    </MultiTrigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Style>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo x:Name="TaskBarInfo"
+                         Description="Universal File Splitter &amp; Joiner"
+                         ProgressValue="0"
+                         ProgressState="None"
+                         ThumbnailClipMargin="0,26" />
+    </Window.TaskbarItemInfo>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <TabControl x:Name="mainTab"
+                    SelectedIndex="1"
+                    BorderBrush="#FFDADBDC"
+                    IsManipulationEnabled="True"
+                    Foreground="{DynamicResource Foreground}">
+            <TabItem x:Name="mainTabFile"
+                     Header="{DynamicResource #H.4#}"
+                     Padding="10,6"
+                     AllowDrop="False"
+                     IsTabStop="False">
+                <Grid x:Name="fileGird"
+                      Margin="0,0,-3,-2">
+                    <TabControl x:Name="fileTab"
+                                SelectedIndex="2"
+                                HorizontalContentAlignment="Center"
+                                BorderBrush="#FFDADBDC"
+                                Margin="0,0,3,0">
+                        <TabItem x:Name="fileTabOptions"
+                                 Header="{DynamicResource #H.7#}"
+                                 Padding="10,6"
+                                 VerticalContentAlignment="Stretch"
+                                 IsSelected="True"
+                                 IsTabStop="False"
+                                 BorderBrush="#FFDADBDC"
+                                 VerticalAlignment="Top"
+                                 Width="Auto"
+                                 Loaded="fileTabOptions_Loaded">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                          CanContentScroll="True"
+                                          PanningMode="VerticalOnly"
+                                          Focusable="False">
+                                <Grid x:Name="OptionGrid"
+                                      RenderTransformOrigin="0.5,0.5"
+                                      Height="540">
+                                    <Grid.RenderTransform>
+                                        <TransformGroup>
+                                            <TranslateTransform x:Name="GridTrans" />
+                                        </TransformGroup>
+                                    </Grid.RenderTransform>
+                                    <Grid.Triggers>
+                                        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="OptionGrid"
+                                                                     Storyboard.TargetProperty="Opacity"
+                                                                     From="0"
+                                                                     To="1.0"
+                                                                     Duration="0:0:0.30" />
+                                                    <DoubleAnimation Storyboard.TargetName="GridTrans"
+                                                                     Storyboard.TargetProperty="X"
+                                                                     From="50"
+                                                                     To="0"
+                                                                     Duration="0:0:0.35" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </Grid.Triggers>
+                                    <CheckBox x:Name="FileOptOntop"
+                                              Content="{DynamicResource #S.02#}"
+                                              HorizontalAlignment="Left"
+                                              Margin="10,10,0,0"
+                                              VerticalAlignment="Top"
+                                              Click="chkOntop_Click"
+                                              BorderThickness="1"
+                                              Foreground="{DynamicResource Foreground}" />
+                                    <CheckBox x:Name="FileOptHideProgress"
+                                              Content="{DynamicResource #S.0C#}"
+                                              HorizontalAlignment="Left"
+                                              Margin="141,10,0,0"
+                                              VerticalAlignment="Top"
+                                              Click="chkOntop_Click"
+                                              BorderThickness="1"
+                                              Foreground="{DynamicResource Foreground}" />
+                                    <CheckBox x:Name="FileOptShowInfo"
+                                              Content="{DynamicResource #S.1D#}"
+                                              HorizontalAlignment="Left"
+                                              Margin="10,30,0,0"
+                                              VerticalAlignment="Top"
+                                              BorderThickness="1"
+                                              Unloaded="FileOptShowInfo_Unloaded"
+                                              Foreground="{DynamicResource Foreground}" />
+                                    <VirtualizingStackPanel Margin="0,50,0,0"
+                                                            Orientation="Vertical">
+                                        <Grid Margin="10,0"
+                                              Height="118">
+                                            <Label Content="{DynamicResource #S.23#}"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Top"
+                                                   Height="26"
+                                                   Width="126"
+                                                   Foreground="{DynamicResource Foreground}" />
+                                            <TextBlock Margin="10,26,10,45"
+                                                       TextWrapping="Wrap"
+                                                       Foreground="{DynamicResource Foreground}">
+                                                <Run Text="{DynamicResource #M.01#}" /></TextBlock>
+                                            <Button x:Name="fileOptPortConvert"
+                                                    Content="{DynamicResource #B.15#}"
+                                                    Margin="10,0,254,10"
+                                                    Height="30"
+                                                    VerticalAlignment="Bottom"
+                                                    IsEnabled="False"
+                                                    Click="fileOptPortConvert_Click" />
+                                            <TextBlock x:Name="fileOptPortConvertStatus"
+                                                       HorizontalAlignment="Right"
+                                                       Height="20"
+                                                       Margin="0,0,0,13"
+                                                       TextWrapping="Wrap"
+                                                       VerticalAlignment="Bottom"
+                                                       Width="249"
+                                                       Foreground="{DynamicResource Foreground}">
+                                                <Run Text="{DynamicResource #M.02#}" /></TextBlock>
+                                        </Grid>
+                                        <Grid Height="96"
+                                              Margin="10,0">
+                                            <Label Content="{DynamicResource #S.03#}"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Top"
+                                                   Height="27"
+                                                   Width="126"
+                                                   Foreground="{DynamicResource Foreground}" />
+                                            <ComboBox x:Name="fileAppLanguage"
+                                                      Height="24"
+                                                      Margin="0,66,156,0"
+                                                      VerticalAlignment="Top"
+                                                      SelectedIndex="0"
+                                                      IsEditable="True"
+                                                      IsReadOnly="True" />
+                                            <Button x:Name="fileAppLangA"
+                                                    Content="{DynamicResource #B.A#}"
+                                                    HorizontalAlignment="Right"
+                                                    Height="25"
+                                                    Margin="0,65,90,0"
+                                                    VerticalAlignment="Top"
+                                                    Width="61"
+                                                    BorderThickness="1"
+                                                    Click="fileAppLangA_Click" />
+                                            <Button x:Name="fileAppLangM"
+                                                    Content="{DynamicResource #B.5#}"
+                                                    Height="25"
+                                                    Margin="0,65,24,0"
+                                                    VerticalAlignment="Top"
+                                                    HorizontalAlignment="Right"
+                                                    Width="61"
+                                                    BorderThickness="1"
+                                                    Click="fileAppLangM_Click" />
+                                            <Grid Margin="0,27,90,44">
+                                                <ComboBox x:Name="fileAppTheme"
+                                                          Height="24"
+                                                          Margin="0,0,66,0"
+                                                          VerticalAlignment="Top"
+                                                          SelectedIndex="0"
+                                                          SelectionChanged="fileAppTheme_SelectionChanged"
+                                                          IsSynchronizedWithCurrentItem="True"
+                                                          IsReadOnly="True"
+                                                          IsEditable="True" />
+                                                <Button x:Name="fileAppThemeR"
+                                                        Content="{DynamicResource #B.16#}"
+                                                        HorizontalAlignment="Right"
+                                                        Height="25"
+                                                        VerticalAlignment="Top"
+                                                        Width="61"
+                                                        BorderThickness="1"
+                                                        Click="fileAppThemeR_Click" />
+                                            </Grid>
+                                        </Grid>
+                                        <Grid HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Top"
+                                              Height="90"
+                                              Margin="0,0,10,0">
+                                            <CheckBox x:Name="fileSettingAssociateExt"
+                                                      Content="{DynamicResource #S.04#}"
+                                                      HorizontalAlignment="Left"
+                                                      Margin="9,29,0,0"
+                                                      VerticalAlignment="Top"
+                                                      Checked="fileSettingAssociateExt_Checked"
+                                                      Foreground="{DynamicResource Foreground}" />
+                                            <CheckBox x:Name="fileSettingIntergrate"
+                                                      Content="{DynamicResource #S.0D#}"
+                                                      HorizontalAlignment="Left"
+                                                      IsEnabled="False"
+                                                      Margin="10,69,0,0"
+                                                      VerticalAlignment="Top"
+                                                      Foreground="{DynamicResource Foreground}" />
+                                            <CheckBox x:Name="fileSettingStartSilent"
+                                                      Content="{DynamicResource #S.20#}"
+                                                      HorizontalAlignment="Left"
+                                                      Margin="31,49,0,0"
+                                                      VerticalAlignment="Top"
+                                                      Checked="fileSettingStartSilent_Checked"
+                                                      Foreground="{DynamicResource Foreground}" />
+                                            <Label Content="{DynamicResource #S.05#}"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Top"
+                                                   Margin="10,0,0,0"
+                                                   Height="24"
+                                                   Width="126"
+                                                   Foreground="{DynamicResource Foreground}" />
+                                        </Grid>
+                                        <Grid VerticalAlignment="Top"
+                                              Margin="0,0,10,0"
+                                              Height="110"
+                                              IsEnabled="False"
+                                              Visibility="Collapsed">
+                                            <RadioButton Content="Windows INI (*.ini)"
+                                                         HorizontalAlignment="Left"
+                                                         Margin="10,32,0,0"
+                                                         VerticalAlignment="Top"
+                                                         IsEnabled="False" />
+                                            <RadioButton Content="DefGear Script (*.dgs)"
+                                                         HorizontalAlignment="Left"
+                                                         Margin="10,52,0,0"
+                                                         VerticalAlignment="Top"
+                                                         IsEnabled="False" />
+                                            <RadioButton Content="Registry Hive (*.reg)"
+                                                         HorizontalAlignment="Left"
+                                                         Margin="157,32,0,0"
+                                                         VerticalAlignment="Top"
+                                                         RenderTransformOrigin="0.502,0.233"
+                                                         IsEnabled="False" />
+                                            <RadioButton Content="Binary Data (*.bin)"
+                                                         HorizontalAlignment="Left"
+                                                         Margin="157,52,0,0"
+                                                         VerticalAlignment="Top"
+                                                         IsChecked="True" />
+                                            <Label Content="{DynamicResource #S.1C#}"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Top"
+                                                   Margin="10,0,0,0"
+                                                   Height="21"
+                                                   Width="126" />
+                                            <Button x:Name="bSaveSetting"
+                                                    Content="Save Setting"
+                                                    HorizontalAlignment="Left"
+                                                    Height="21"
+                                                    Margin="10,79,0,0"
+                                                    VerticalAlignment="Top"
+                                                    Width="93"
+                                                    Click="bSaveSetting_Click"
+                                                    BorderThickness="1" />
+                                            <Button x:Name="bLoadSetting"
+                                                    Content="Load Setting"
+                                                    HorizontalAlignment="Left"
+                                                    Height="21"
+                                                    Margin="108,79,0,0"
+                                                    VerticalAlignment="Top"
+                                                    Width="93"
+                                                    BorderThickness="1" />
+                                        </Grid>
+                                        <Grid Margin="10,0"
+                                              Height="107"
+                                              IsEnabled="False">
+                                            <TextBox x:Name="fileSettingFormat"
+                                                     Height="23"
+                                                     Margin="0,56,0,0"
+                                                     TextWrapping="Wrap"
+                                                     VerticalAlignment="Top" />
+                                            <Label x:Name="fileSettingPreview"
+                                                   Content="{DynamicResource #S.17#}"
+                                                   HorizontalAlignment="Left"
+                                                   Margin="0,79,0,0"
+                                                   VerticalAlignment="Top" />
+                                            <ComboBox x:Name="fileCDefs"
+                                                      Height="24"
+                                                      Margin="0,27,129,0"
+                                                      VerticalAlignment="Top"
+                                                      IsReadOnly="True"
+                                                      SelectedIndex="0"
+                                                      SelectionChanged="fileCDefs_SelectionChanged"
+                                                      IsEditable="True">
+                                                <ComboBoxItem Content="UFSJ Standard" />
+                                                <!--Tag='[filename].[ext].[idx]' />-->
+                                                <!--Tag='[filename].[idx].ufs' />-->
+                                                <ComboBoxItem Content="UFSJ Hex"
+                                                              IsEnabled='False' />
+                                                <!--Tag='[filename}.[idxh].ufsx' />-->
+                                                <ComboBoxItem Content="Extension Suffix (Standard)"
+                                                              IsEnabled='False' />
+                                                <!--Tag='[filename].[ext].[idx]' />-->
+                                                <ComboBoxItem Content="Extension Prefix"
+                                                              IsEnabled='False' />
+                                                <!--Tag='[filename].[idx].[ext]' />-->
+                                                <ComboBoxItem Content="Custom"
+                                                              IsEnabled='False' />
+                                            </ComboBox>
+                                            <Label Content="{DynamicResource #S.09#}"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Top"
+                                                   Height="27"
+                                                   Width="126" />
+                                        </Grid>
+                                        <Grid Margin="10,0"
+                                              Height="95"
+                                              Visibility="Collapsed">
+                                            <Label Content="{DynamicResource #S.1A#}"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Top"
+                                                   Height="21"
+                                                   Width="126" />
+                                        </Grid>
+                                    </VirtualizingStackPanel>
+                                </Grid>
+                            </ScrollViewer>
+                        </TabItem>
+                        <TabItem x:Name="fileTabCredits"
+                                 Header="{DynamicResource #H.3#}"
+                                 Padding="10,6"
+                                 Foreground="Black"
+                                 IsTabStop="False"
+                                 BorderBrush="#FFDADBDC"
+                                 Width="Auto">
+                            <Grid x:Name="CreditsGrid"
+                                  RenderTransformOrigin="0.948,0.932">
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform x:Name="CredTrans"
+                                                            X="0" />
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+                                <Grid.Triggers>
+                                    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="CreditsGrid"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 From="0"
+                                                                 To="1.0"
+                                                                 Duration="0:0:0.30" />
+                                                <DoubleAnimation Storyboard.TargetName="CredTrans"
+                                                                 Storyboard.TargetProperty="Y"
+                                                                 From="50"
+                                                                 To="0"
+                                                                 Duration="0:0:0.35" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Grid.Triggers>
+                                <ListBox x:Name="lstContrib"
+                                         IsSynchronizedWithCurrentItem="False">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate DataType="uContributor">
+                                            <ListBoxItem FocusVisualStyle="{x:Null}"
+                                                         Focusable="True">
+                                                <StackPanel Background="{x:Null}"
+                                                            Focusable='False'>
+                                                    <TextBlock DockPanel.Dock="Top"
+                                                               FontSize="20"
+                                                               Foreground="{DynamicResource Foreground}"
+                                                               Text="{Binding Path=Name}" />
+                                                    <TextBlock DockPanel.Dock="Top"
+                                                               FontSize="16"
+                                                               Foreground="{DynamicResource Foreground}"
+                                                               Text="{Binding Path=Contributions}" />
+                                                    <TextBlock DockPanel.Dock="Top"
+                                                               Foreground="{DynamicResource Foreground}"
+                                                               Text="{Binding Path=Mail}" />
+                                                </StackPanel>
+                                            </ListBoxItem>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="fileTabAbout"
+                                 Header="{DynamicResource #H.1#}"
+                                 Padding="10,6"
+                                 IsTabStop="False"
+                                 Width="Auto">
+                            <Grid>
+                                <Label x:Name="Titles"
+                                       Content="UFSJ"
+                                       FontSize="42"
+                                       FontWeight="ExtraBold"
+                                       FontStretch="Expanded"
+                                       Margin="74,10,0,0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Top"
+                                       RenderTransformOrigin="0.5,0.5"
+                                       Height="58"
+                                       Width="104"
+                                       Foreground="{DynamicResource Foreground}" />
+                                <Label x:Name="Edition"
+                                       Content="#"
+                                       FontSize="28"
+                                       FontWeight="ExtraBold"
+                                       FontStretch="Expanded"
+                                       Margin="178,0,0,0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Top"
+                                       Height="41"
+                                       Foreground="{DynamicResource Foreground}" />
+                                <Label x:Name="FreeLabel"
+                                       Content="{DynamicResource #S.0A#}"
+                                       HorizontalAlignment="Left"
+                                       Margin="183,34,0,0"
+                                       VerticalAlignment="Top"
+                                       RenderTransformOrigin="0.5,0.5"
+                                       FontSize="18"
+                                       FontWeight="Bold"
+                                       Foreground="{DynamicResource Foreground}">
+                                    <Label.RenderTransform>
+                                        <TransformGroup>
+                                            <TranslateTransform x:Name="FreeTrans" />
+                                        </TransformGroup>
+                                    </Label.RenderTransform>
+                                </Label>
+                                <Grid Margin="10,10,0,0"
+                                      Name="LogoGrid"
+                                      HorizontalAlignment="Left"
+                                      Width="60"
+                                      Height="60"
+                                      VerticalAlignment="Top"
+                                      Background="{DynamicResource BackgroundSelected}">
+                                    <Grid.Triggers>
+                                        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="Logo"
+                                                                     Storyboard.TargetProperty="Width"
+                                                                     From="0"
+                                                                     To="60"
+                                                                     Duration="0:0:0.30">
+                                                        <DoubleAnimation.EasingFunction>
+                                                            <BackEase Amplitude="0.3"
+                                                                      EasingMode="EaseOut" />
+                                                        </DoubleAnimation.EasingFunction>
+                                                    </DoubleAnimation>
+                                                    <DoubleAnimation Storyboard.TargetName="LogoGrid"
+                                                                     Storyboard.TargetProperty="Width"
+                                                                     From="0"
+                                                                     To="60"
+                                                                     Duration="0:0:0.30">
+                                                        <DoubleAnimation.EasingFunction>
+                                                            <BackEase Amplitude="0.3"
+                                                                      EasingMode="EaseOut" />
+                                                        </DoubleAnimation.EasingFunction>
+                                                    </DoubleAnimation>
+                                                    <DoubleAnimation Storyboard.TargetName="Titles"
+                                                                     Storyboard.TargetProperty="Opacity"
+                                                                     From="0"
+                                                                     To="1.0"
+                                                                     Duration="0:0:0.30" />
+                                                    <DoubleAnimation Storyboard.TargetName="Edition"
+                                                                     Storyboard.TargetProperty="Opacity"
+                                                                     From="0"
+                                                                     To="1.0"
+                                                                     Duration="0:0:0.30" />
+                                                    <DoubleAnimation Storyboard.TargetName="FreeTrans"
+                                                                     Storyboard.TargetProperty="X"
+                                                                     From="30"
+                                                                     To="0"
+                                                                     Duration="0:0:0.30">
+                                                        <DoubleAnimation.EasingFunction>
+                                                            <BackEase Amplitude="0.3"
+                                                                      EasingMode="EaseOut" />
+                                                        </DoubleAnimation.EasingFunction>
+                                                    </DoubleAnimation>
+                                                    <DoubleAnimation Storyboard.TargetName="AboutGrid"
+                                                                     Storyboard.TargetProperty="Opacity"
+                                                                     From="0"
+                                                                     To="1.0"
+                                                                     Duration="0:0:0.30" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </Grid.Triggers>
+                                    <Image x:Name="Logo"
+                                           HorizontalAlignment="Left"
+                                           Height="60"
+                                           VerticalAlignment="Top"
+                                           Width="60"
+                                           Source="../Resources/UFSJN.png"
+                                           Stretch="Fill"></Image>
+                                </Grid>
+                                <Grid x:Name="AboutGrid"
+                                      HorizontalAlignment="Left"
+                                      Margin="10,75,0,0"
+                                      Width="472">
+                                    <Label x:Name="About"
+                                           Content="Universal File/Folder Splitter and Joiner.&#xA;lightweight, speed, powerfull."
+                                           FontSize="14"
+                                           FontStretch="Expanded"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Height="50"
+                                           Width="315"
+                                           Foreground="{DynamicResource Foreground}"
+                                           Margin="0,51,0,0" />
+                                    <Label x:Name="About3"
+                                           Content="Application designed with WDExpress 2013&#xA;Icons created with Greenfish Icon Editor Pro 3.1&#xA;Documentated with Ms Word 2013"
+                                           FontSize="14"
+                                           FontStretch="Expanded"
+                                           VerticalAlignment="Top"
+                                           Foreground="{DynamicResource Foreground}"
+                                           Margin="0,96,0,0" />
+                                    <Label x:Name="About5"
+                                           Content="Copyright © 2014 UFASoft Technology&#xA;Temanggung, Indonesia."
+                                           FontSize="14"
+                                           FontStretch="Expanded"
+                                           Foreground="{DynamicResource Foreground}"
+                                           Height="54"
+                                           VerticalAlignment="Bottom"
+                                           Margin="0,0,0,-5" />
+                                    <Label x:Name="OsInfo"
+                                           Content=""
+                                           FontSize="14"
+                                           FontStretch="Expanded"
+                                           Foreground="{DynamicResource Foreground}"
+                                           Margin="0,162,0,0"
+                                           Height="77"
+                                           VerticalAlignment="Top"
+                                           RenderTransformOrigin="0.498,0.278" />
+                                    <Label x:Name="AboutName"
+                                           Content="Universal File Splitter &amp; Joiner"
+                                           FontStretch="Expanded"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Height="36"
+                                           Width="315"
+                                           Foreground="{DynamicResource Foreground}"
+                                           Margin="0,-3,0,0"
+                                           FontSize="16" />
+                                    <Label x:Name="AboutVersion"
+                                           Content="Version 0.9.6 Build 10629"
+                                           FontStretch="Expanded"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Height="31"
+                                           Width="462"
+                                           Foreground="{DynamicResource Foreground}"
+                                           Margin="10,20,0,0"
+                                           VerticalContentAlignment="Center"
+                                           FontSize="14" />
+                                </Grid>
+                                <Label x:Name="FreeLabel2"
+                                       Content="BETA"
+                                       Margin="0,12,3,0"
+                                       VerticalAlignment="Top"
+                                       RenderTransformOrigin="0.5,0.5"
+                                       FontSize="18"
+                                       FontWeight="Bold"
+                                       HorizontalAlignment="Right"
+                                       Width="71"
+                                       VerticalContentAlignment="Center"
+                                       HorizontalContentAlignment="Center"
+                                       Foreground="{DynamicResource Foreground}"
+                                       Visibility='Hidden'>
+                                    <Label.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform />
+                                            <SkewTransform />
+                                            <RotateTransform Angle="23.309" />
+                                            <TranslateTransform X="1.006"
+                                                                Y="-2.334" />
+                                        </TransformGroup>
+                                    </Label.RenderTransform>
+                                </Label>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="{DynamicResource #H.9#}"
+                                 VerticalAlignment="Top"
+                                 IsTabStop="False"
+                                 BorderBrush="#FFDADBDC"
+                                 Width="Auto">
+                            <Grid Margin="0,0,2,0">
+                                <Image x:Name="imgKIR"
+                                       Source="../Resources/KIRA.png"
+                                       Margin="75,36,89,0"
+                                       MouseMove="imgKIR_MouseMove"
+                                       Height="160"
+                                       VerticalAlignment="Top" />
+                                <Image x:Name="imgUFSJ"
+                                       Source="../Resources/Splash.gif"
+                                       Margin="10,41,0,0"
+                                       MouseMove="imgUFSJ_MouseMove"
+                                       HorizontalAlignment="Left"
+                                       Width="109"
+                                       Height="135"
+                                       VerticalAlignment="Top"
+                                       Stretch="Fill" />
+                                <Image x:Name="imgSMP"
+                                       Source="../Resources/SMP.png"
+                                       Margin="0,41,10,0"
+                                       MouseMove="imgSMP_MouseMove"
+                                       HorizontalAlignment="Right"
+                                       Width="142"
+                                       Height="150"
+                                       VerticalAlignment="Top"
+                                       RenderTransformOrigin="0.811,0.529" />
+                                <Label x:Name="lInformationSupport"
+                                       Content="UFASoft Technology"
+                                       Margin="0,191,0,78"
+                                       RenderTransformOrigin="0.868,0.385"
+                                       FontSize="24"
+                                       HorizontalContentAlignment="Center"
+                                       VerticalContentAlignment="Center"
+                                       Background="{x:Null}"
+                                       Foreground="{DynamicResource Foreground}" />
+                                <Image x:Name="imgUFASoft"
+                                       Source="/UFSJ;component/Resources/UFASoft.png"
+                                       Height="36"
+                                       VerticalAlignment="Top"
+                                       MouseMove="imgUFASoft_MouseMove"
+                                       Margin='0,10,0,0' />
+                                <Image x:Name='image'
+                                       HorizontalAlignment='Left'
+                                       Height='52'
+                                       Margin='356,0,0,10'
+                                       VerticalAlignment='Bottom'
+                                       Width='128'
+                                       Source='/UFSJ;component/Resources/GPL3.png' />
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="fileTabUpdates"
+                                 Header="UPDATES"
+                                 Visibility="Hidden">
+                            <Grid>
+                                <Button x:Name="fileUpdatesUpd"
+                                        Content="UPDATE"
+                                        HorizontalAlignment="Center"
+                                        Height="49"
+                                        Margin="129,316,129,10"
+                                        VerticalAlignment="Center"
+                                        Width="155"
+                                        BorderThickness="2"
+                                        FontSize="20" />
+                                <TextBlock x:Name="block1"
+                                           HorizontalAlignment="Left"
+                                           Height="90"
+                                           Margin="10,10,0,0"
+                                           TextWrapping="Wrap"
+                                           VerticalAlignment="Top"
+                                           Width="200" />
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="mainTabSplit"
+                     Header="{DynamicResource #H.8#}"
+                     AllowDrop="False"
+                     Padding="10,8"
+                     IsTabStop="False">
+                <Grid x:Name="splitGird"
+                      AllowDrop="True"
+                      DragEnter="Grid_DragEnter"
+                      Drop="Grid_Drop">
+                    <Label Content="{DynamicResource #S.14#}"
+                           HorizontalAlignment="Left"
+                           Margin="9,55,0,0"
+                           VerticalAlignment="Top"
+                           Foreground="{DynamicResource Foreground}" />
+                    <Label Content="{DynamicResource #S.1E#}"
+                           HorizontalAlignment="Left"
+                           Margin="9,2,0,0"
+                           VerticalAlignment="Top"
+                           Foreground="{DynamicResource Foreground}" />
+                    <Label x:Name="splitInSize"
+                           Content="No File"
+                           HorizontalAlignment="Right"
+                           Margin="0,2,71,0"
+                           VerticalAlignment="Top"
+                           HorizontalContentAlignment="Right"
+                           Opacity="0.2" />
+                    <TextBox x:Name="splitInPath"
+                             Margin="14,28,36,0"
+                             Text=""
+                             VerticalAlignment="Top"
+                             Height="24"
+                             UndoLimit="5"
+                             VerticalContentAlignment="Center"
+                             TextChanged="splitPathIn_TextChanged"
+                             SelectionBrush="#FF3399FF"
+                             MaxLines="1"
+                             ToolTip="Required, browse file to be splitted, or enter it manualy" />
+                    <Button x:Name="splitInBrowse"
+                            Content="..."
+                            HorizontalAlignment="Right"
+                            Height="24"
+                            Margin="0,28,10,0"
+                            VerticalAlignment="Top"
+                            Width="26"
+                            Click="SpltBrowseIn_Click"
+                            FontSize="11"
+                            BorderThickness="1"
+                            BorderBrush='{DynamicResource TextBoxBackground}'
+                            Background='{DynamicResource LinkButtonForeground}' />
+                    <Label x:Name="splitOutSize"
+                           Content="No File"
+                           HorizontalAlignment="Right"
+                           Margin="0,55,71,0"
+                           VerticalAlignment="Top"
+                           HorizontalContentAlignment="Right"
+                           Opacity="0.2" />
+                    <TextBox x:Name="splitOutPath"
+                             Margin="14,81,36,0"
+                             Text=""
+                             VerticalAlignment="Top"
+                             Height="24"
+                             UndoLimit="5"
+                             VerticalContentAlignment="Center"
+                             TextChanged="splitPathOut_TextChanged"
+                             SelectionBrush="#FF3399FF"
+                             MaxLines="1" />
+                    <Button x:Name="splitOutBrowse"
+                            Content="..."
+                            HorizontalAlignment="Right"
+                            Height="24"
+                            Margin="0,81,10,0"
+                            VerticalAlignment="Top"
+                            Width="26"
+                            Click="SpltBrowseOut_Click"
+                            FontSize="11"
+                            BorderThickness="1"
+                            BorderBrush='{DynamicResource TextBoxBackground}'
+                            Background='{DynamicResource LinkButtonForeground}' />
+                    <Grid x:Name="splitOptionGrid"
+                          Margin="0,110,0,0">
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="splitOptionGrid"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="0"
+                                                         To="1.0"
+                                                         Duration="0:0:0.20" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <Label Content="{DynamicResource #S.16#}"
+                               HorizontalAlignment="Left"
+                               Margin="10,10,0,0"
+                               VerticalAlignment="Top"
+                               Foreground="{DynamicResource Foreground}" />
+                        <Label Content="{DynamicResource #S.1F#}"
+                               HorizontalAlignment="Left"
+                               Margin="11,41,0,0"
+                               VerticalAlignment="Top"
+                               RenderTransformOrigin="0.491,0.5"
+                               Foreground="{DynamicResource Foreground}" />
+                        <ComboBox x:Name="splitOptComboPreDef"
+                                  Margin="70,10,70,0"
+                                  SelectedIndex="0"
+                                  VerticalAlignment="Top"
+                                  SelectionChanged="cPresent_SelectionChanged"
+                                  IsReadOnly="True"
+                                  Height="26"
+                                  VerticalContentAlignment="Center"
+                                  IsEditable="True">
+                            <ComboBoxItem Content="{DynamicResource #S.06#}" />
+                        </ComboBox>
+                        <TextBox x:Name="splitOptSizeT"
+                                 TextWrapping="Wrap"
+                                 Text="0"
+                                 VerticalAlignment="Top"
+                                 Margin="71,41,195,0"
+                                 UndoLimit="5"
+                                 Height="27"
+                                 VerticalContentAlignment="Center"
+                                 SelectionBrush="#FF3399FF"
+                                 HorizontalContentAlignment="Right" />
+                        <ComboBox x:Name="splitOptSizeC"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Top"
+                                  SelectedIndex="0"
+                                  Margin="0,41,70,0"
+                                  Height="27"
+                                  MaxDropDownHeight="340"
+                                  MinHeight="24"
+                                  VerticalContentAlignment="Center"
+                                  Width="108"
+                                  IsReadOnly="True"
+                                  IsEditable="True">
+                            <ComboBoxItem x:Name="cSplitBytes"
+                                          Content="Bytes" />
+                            <ComboBoxItem x:Name="cSplitKilo"
+                                          Content="KB" />
+                            <ComboBoxItem x:Name="cSplitMega"
+                                          Content="MB" />
+                            <ComboBoxItem x:Name="cSplitGiga"
+                                          Content="GB" />
+                            <ComboBoxItem x:Name="cSplitParts"
+                                          Content="{DynamicResource #S.15#}"
+                                          Background="#FFEDFFF2"
+                                          BorderThickness="0" />
+                        </ComboBox>
+                        <CheckBox x:Name="splitOptDelete"
+                                  Content="{DynamicResource #S.08#}"
+                                  HorizontalAlignment="Left"
+                                  Margin="10,130,0,0"
+                                  VerticalAlignment="Top"
+                                  Foreground="{DynamicResource Foreground}" />
+                        <Button x:Name="splitOpenOutDir"
+                                Content="{DynamicResource #B.6#}"
+                                HorizontalAlignment="Left"
+                                Height="26"
+                                Margin="10,0,0,42"
+                                VerticalAlignment="Bottom"
+                                Width="139"
+                                BorderThickness="1"
+                                RenderTransformOrigin="0,0"
+                                FontSize="11"
+                                IsEnabled="False"
+                                Click="spltOpenOutDir_Click" />
+                        <Button x:Name="splitViewSum"
+                                Content="{DynamicResource #B.8#}"
+                                HorizontalAlignment="Left"
+                                Margin="10,0,0,10"
+                                Width="139"
+                                BorderThickness="1"
+                                RenderTransformOrigin="0.475,0"
+                                IsEnabled="False"
+                                Height="26"
+                                VerticalAlignment="Bottom"
+                                FontSize="11" />
+                        <Button x:Name="splitStart"
+                                Content="{DynamicResource #B.1#}"
+                                Click="spltStart_Click"
+                                Height="58"
+                                Width="128"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,10,10"
+                                BorderThickness="1" />
+                        <CheckBox x:Name="splitOptBatch"
+                                  Content="{DynamicResource #S.0B#}"
+                                  HorizontalAlignment="Left"
+                                  Margin="10,150,0,0"
+                                  Width="174"
+                                  VerticalAlignment="Top"
+                                  RenderTransformOrigin="0.489,0.6"
+                                  Foreground="{DynamicResource Foreground}" />
+                        <TextBox x:Name="splitOptGenerateValue"
+                                 Height="27"
+                                 Margin="194,73,107,0"
+                                 TextWrapping="Wrap"
+                                 Text="0"
+                                 VerticalAlignment="Top"
+                                 VerticalContentAlignment="Center"
+                                 ToolTip="Example: 1-9; 1,2,5-7" />
+                        <Label x:Name="splitOptGenerateLabel"
+                               Content="{DynamicResource #S.15#}"
+                               HorizontalAlignment="Right"
+                               Height="27"
+                               Margin="0,73,10,0"
+                               VerticalAlignment="Top"
+                               Width="92"
+                               Foreground="{DynamicResource Foreground}" />
+                        <Label Content="{DynamicResource #S.13#}"
+                               HorizontalAlignment="Left"
+                               Margin="11,105,0,0"
+                               VerticalAlignment="Top"
+                               Height="20"
+                               Padding="1,0,5,0"
+                               Width="174"
+                               Foreground="{DynamicResource Foreground}" />
+                        <Button x:Name="splitPreManage"
+                                Content="{DynamicResource #B.5#}"
+                                HorizontalAlignment="Right"
+                                Height="26"
+                                Margin="0,10,10,0"
+                                VerticalAlignment="Top"
+                                Width="55"
+                                RenderTransformOrigin="0.661,1"
+                                Click="splitPreManage_Click"
+                                BorderThickness="1">
+                            <Button.ToolTip>
+                                <ToolTip Content="Manage presented list. you can add, remove, and edit whatever you like." />
+                            </Button.ToolTip>
+                        </Button>
+                        <ComboBox x:Name="splitOptGenerate"
+                                  SelectedIndex="0"
+                                  Height="27"
+                                  Margin="70,73,0,0"
+                                  VerticalAlignment="Top"
+                                  IsReadOnly="True"
+                                  HorizontalContentAlignment="Left"
+                                  VerticalContentAlignment="Center"
+                                  HorizontalAlignment="Left"
+                                  Width="119"
+                                  SelectionChanged="splitOptGenerate_SelectionChanged"
+                                  IsEditable="True">
+                            <ComboBoxItem Content="{DynamicResource #S.0F#}" />
+                            <ComboBoxItem Content="{DynamicResource #S.10#}" />
+                            <ComboBoxItem Content="{DynamicResource  #S.11#}" />
+                            <ComboBoxItem Content="{DynamicResource #S.12#}" />
+                        </ComboBox>
+                        <CheckBox x:Name="splitOptCompress"
+                                  Content="Compress Part"
+                                  HorizontalAlignment="Left"
+                                  Margin="11,170,0,0"
+                                  Width="174"
+                                  VerticalAlignment="Top"
+                                  RenderTransformOrigin="0.489,0.6"
+                                  IsEnabled="False"
+                                  Visibility="Hidden" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="mainTabJoin"
+                     Header="{DynamicResource #H.6#}"
+                     AllowDrop="False"
+                     Padding="10,6"
+                     IsTabStop="False">
+                <Grid x:Name="joinGird"
+                      AllowDrop="True"
+                      DragEnter="JoinGrid_DragEnter"
+                      Drop="JoinGrid_Drop">
+                    <Label Content="{DynamicResource #S.1E#}"
+                           HorizontalAlignment="Left"
+                           Margin="9,2,0,0"
+                           VerticalAlignment="Top"
+                           Foreground="{DynamicResource Foreground}" />
+                    <Label Content="{DynamicResource #S.14#}"
+                           HorizontalAlignment="Left"
+                           Margin="9,55,0,0"
+                           VerticalAlignment="Top"
+                           Foreground="{DynamicResource Foreground}" />
+                    <TextBox x:Name="joinInPath"
+                             Margin="14,28,71,0"
+                             Text=""
+                             VerticalAlignment="Top"
+                             Height="24"
+                             VerticalContentAlignment="Center"
+                             TextChanged="joinInPath_TextChanged"
+                             SelectionBrush="#FF3399FF" />
+                    <Label x:Name="joinInSize"
+                           Content="No File"
+                           HorizontalAlignment="Right"
+                           Margin="0,2,71,0"
+                           VerticalAlignment="Top"
+                           HorizontalContentAlignment="Right"
+                           Opacity="0.2" />
+                    <Button x:Name="joinInBrowse"
+                            Content="{DynamicResource #B.B#}"
+                            HorizontalAlignment="Right"
+                            Height="24"
+                            Margin="0,28,10,0"
+                            VerticalAlignment="Top"
+                            Width="56"
+                            Click="JoinBrowseIn_Click"
+                            FontSize="11"
+                            BorderThickness="1" />
+                    <TextBox x:Name="joinOutPath"
+                             Margin="14,81,71,0"
+                             Text=""
+                             VerticalAlignment="Top"
+                             Height="24"
+                             VerticalContentAlignment="Center"
+                             TextChanged="joinOutPath_TextChanged"
+                             SelectionBrush="#FF3399FF" />
+                    <Label x:Name="joinOutSize"
+                           Content="No File"
+                           HorizontalAlignment="Right"
+                           Margin="0,55,71,0"
+                           VerticalAlignment="Top"
+                           HorizontalContentAlignment="Right"
+                           Opacity="0.2" />
+                    <Button x:Name="joinOutBrowse"
+                            Content="{DynamicResource #B.B#}"
+                            HorizontalAlignment="Right"
+                            Height="24"
+                            Margin="0,81,10,0"
+                            VerticalAlignment="Top"
+                            Width="56"
+                            Click="JoinBrowseOut_Click"
+                            FontSize="11"
+                            BorderThickness="1" />
+                    <Grid x:Name="joinOptionGrid"
+                          Margin="0,110,0,0">
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="joinOptionGrid"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="0"
+                                                         To="1.0"
+                                                         Duration="0:0:0.20" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <CheckBox x:Name="joinOptDelete"
+                                  Content="{DynamicResource #S.07#}"
+                                  HorizontalAlignment="Left"
+                                  Margin="10,35,0,0"
+                                  VerticalAlignment="Top"
+                                  Foreground="{DynamicResource Foreground}" />
+                        <Button x:Name="joinOpenOutDir"
+                                Content="{DynamicResource #B.6#}"
+                                HorizontalAlignment="Left"
+                                Height="20"
+                                Margin="10,0,0,35"
+                                VerticalAlignment="Bottom"
+                                Width="139"
+                                BorderThickness="1"
+                                Click="joinOpenOutDir_Click"
+                                FontSize="11"
+                                IsEnabled="False" />
+                        <Button x:Name="joinViewSum"
+                                Content="{DynamicResource #B.8#}"
+                                HorizontalAlignment="Left"
+                                Margin="10,0,0,10"
+                                Width="139"
+                                BorderThickness="1"
+                                IsEnabled="False"
+                                Height="20"
+                                VerticalAlignment="Bottom"
+                                FontSize="11" />
+                        <Button x:Name="joinStart"
+                                Content="{DynamicResource #B.2#}"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,10,10"
+                                Height="58"
+                                Width="128"
+                                Click="joinStart_Click"
+                                VerticalAlignment="Bottom"
+                                BorderThickness="1" />
+                        <Label Content="{DynamicResource #S.13#}"
+                               HorizontalAlignment="Left"
+                               Margin="10,10,0,0"
+                               VerticalAlignment="Top"
+                               Height="20"
+                               Padding="1,0,5,0"
+                               Width="174"
+                               Foreground="{DynamicResource Foreground}" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="mainTabHash"
+                     Header="{DynamicResource #H.5#}"
+                     AllowDrop="False"
+                     Padding="10,8"
+                     IsTabStop="False"
+                     HorizontalAlignment="Left">
+                <Grid x:Name="HashGrid"
+                      AllowDrop="True"
+                      DragEnter="HashGrid_DragEnter"
+                      Drop="HashGrid_Drop">
+                    <Label Content="{DynamicResource #S.1E#}"
+                           HorizontalAlignment="Left"
+                           Margin="9,2,0,0"
+                           VerticalAlignment="Top"
+                           Foreground="{DynamicResource Foreground}" />
+                    <Label Content="{DynamicResource #S.14#}"
+                           HorizontalAlignment="Left"
+                           Margin="9,55,0,0"
+                           VerticalAlignment="Top"
+                           Foreground="{DynamicResource Foreground}" />
+                    <TextBox x:Name="hashInPath"
+                             Margin="14,28,71,0"
+                             Text=""
+                             VerticalAlignment="Top"
+                             Height="24"
+                             VerticalContentAlignment="Center"
+                             TextChanged="hashInPath_TextChanged"
+                             SelectionBrush="#FF3399FF" />
+                    <Label x:Name="hashInSize"
+                           Content="No File"
+                           HorizontalAlignment="Right"
+                           Margin="0,2,71,0"
+                           VerticalAlignment="Top"
+                           HorizontalContentAlignment="Right"
+                           Opacity="0.2" />
+                    <Button x:Name="hashInBrowse"
+                            Content="{DynamicResource #B.B#}"
+                            HorizontalAlignment="Right"
+                            Height="24"
+                            Margin="0,28,10,0"
+                            VerticalAlignment="Top"
+                            Width="56"
+                            Click="HashBrowseIn_Click"
+                            FontSize="11"
+                            BorderThickness="1" />
+                    <TextBox x:Name="hashOutPath"
+                             Margin="14,81,71,0"
+                             Text=""
+                             VerticalAlignment="Top"
+                             Height="24"
+                             VerticalContentAlignment="Center"
+                             TextChanged="hashOutPath_TextChanged"
+                             SelectionBrush="#FF3399FF" />
+                    <Label x:Name="hashOutSize"
+                           Content="No File"
+                           HorizontalAlignment="Right"
+                           Margin="0,55,71,0"
+                           VerticalAlignment="Top"
+                           HorizontalContentAlignment="Right"
+                           Opacity="0.2" />
+                    <Button x:Name="hashOutBrowse"
+                            Content="{DynamicResource #B.B#}"
+                            HorizontalAlignment="Right"
+                            Height="24"
+                            Margin="0,81,10,0"
+                            VerticalAlignment="Top"
+                            Width="56"
+                            Click="HashBrowseOut_Click"
+                            FontSize="11"
+                            BorderThickness="1" />
+                    <Grid x:Name="hashOptGrid"
+                          Margin="0,110,0,0">
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="hashOptGrid"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="0"
+                                                         To="1.0"
+                                                         Duration="0:0:0.20" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <TextBox x:Name="hashOutT"
+                                 IsReadOnly="True"
+                                 Margin="10,0,134,73"
+                                 TextWrapping="Wrap"
+                                 Text=""
+                                 Height="51"
+                                 VerticalAlignment="Bottom"
+                                 TextChanged="hashOutT_TextChanged" />
+                        <ComboBox x:Name="hashOutAlgol"
+                                  HorizontalAlignment="Right"
+                                  SelectedIndex="0"
+                                  Margin="0,0,10,129"
+                                  VerticalAlignment="Bottom"
+                                  Width="104"
+                                  Height="23"
+                                  VerticalContentAlignment="Center"
+                                  BorderBrush="#FF7CACD9"
+                                  MaxDropDownHeight="330"
+                                  IsSynchronizedWithCurrentItem="True"
+                                  IsReadOnly="True"
+                                  IsEditable="True">
+                            <ComboBoxItem x:Name="hashOutA1"
+                                          Content="CRC32" />
+                            <ComboBoxItem x:Name="hashOutA2"
+                                          Content="MD5" />
+                            <ComboBoxItem x:Name="hashOutA3"
+                                          Content="SHA-1" />
+                            <ComboBoxItem x:Name="hashOutA4"
+                                          Content="SHA-256" />
+                            <ComboBoxItem x:Name="hashOutA5"
+                                          Content="SHA-384" />
+                            <ComboBoxItem x:Name="hashOutA6"
+                                          Content="SHA-512" />
+                        </ComboBox>
+                        <Button x:Name="hashOutView"
+                                HorizontalAlignment="Right"
+                                Height="23"
+                                Margin="0,0,10,101"
+                                VerticalAlignment="Bottom"
+                                Width="119"
+                                Click="hashOutView_Click"
+                                Content="{DynamicResource #B.12#}"
+                                FontSize="11"
+                                BorderThickness="1" />
+                        <Button x:Name="hashOutCopy"
+                                Click="hashOutCopy_Click"
+                                HorizontalAlignment="Right"
+                                Height="23"
+                                Margin="0,0,10,73"
+                                VerticalAlignment="Bottom"
+                                Width="119"
+                                Content="{DynamicResource #B.13#}"
+                                FontSize="11"
+                                IsEnabled="False"
+                                RenderTransformOrigin="0.532,0.391"
+                                BorderThickness="1" />
+                        <Button x:Name="hashOpenOutDir"
+                                Content="{DynamicResource #B.6#}"
+                                HorizontalAlignment="Left"
+                                Height="20"
+                                Margin="10,0,0,35"
+                                VerticalAlignment="Bottom"
+                                Width="139"
+                                BorderThickness="1"
+                                RenderTransformOrigin="0.475,0"
+                                Click="hashOpenOutDir_Click"
+                                FontSize="11"
+                                IsEnabled="False" />
+                        <Button x:Name="hashViewSum"
+                                Content="{DynamicResource #B.8#}"
+                                HorizontalAlignment="Left"
+                                Margin="10,0,0,10"
+                                Width="139"
+                                BorderThickness="1"
+                                RenderTransformOrigin="0.475,0"
+                                IsEnabled="False"
+                                Height="20"
+                                VerticalAlignment="Bottom"
+                                FontSize="11"
+                                Click="hashViewSum_Click" />
+                        <Button x:Name="hashStart"
+                                Content="{DynamicResource #B.3#}"
+                                Click="hashStart_Click"
+                                HorizontalAlignment="Right"
+                                Height="58"
+                                Width="128"
+                                VerticalAlignment="Bottom"
+                                BorderThickness="1"
+                                Margin="0,0,10,10" />
+                        <CheckBox x:Name="hashSaveRes"
+                                  Content="{DynamicResource #S.19#}"
+                                  HorizontalAlignment="Left"
+                                  Margin="10,100,0,0"
+                                  VerticalAlignment="Top"
+                                  Foreground="{DynamicResource Foreground}"
+                                  Checked="hashSaveRes_Checked"
+                                  Height="20"
+                                  RenderTransformOrigin="0.5,-0.15" />
+                        <Label Content="{DynamicResource #S.13#}"
+                               HorizontalAlignment="Left"
+                               Margin="10,10,0,0"
+                               VerticalAlignment="Top"
+                               Height="20"
+                               Padding="1,0,5,0"
+                               Width="174"
+                               Foreground="{DynamicResource Foreground}" />
+                        <CheckBox x:Name="hashOptMD5"
+                                  Content="MD5"
+                                  HorizontalAlignment="Left"
+                                  Margin="10,50,0,0"
+                                  VerticalAlignment="Top"
+                                  IsChecked="True"
+                                  Tag="1"
+                                  Foreground="{DynamicResource Foreground}"
+                                  RenderTransformOrigin="0.5,0.5" />
+                        <CheckBox x:Name="hashOptCRC32"
+                                  Content="CRC32"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  Tag="0"
+                                  Foreground="{DynamicResource Foreground}"
+                                  Margin="10,30,0,0" />
+                        <CheckBox x:Name="hashOptSHA1"
+                                  Content="SHA-1"
+                                  HorizontalAlignment="Left"
+                                  Margin="10,70,0,0"
+                                  VerticalAlignment="Top"
+                                  Tag="2"
+                                  Foreground="{DynamicResource Foreground}" />
+                        <CheckBox x:Name="hashOptSHA2"
+                                  Content="SHA-256"
+                                  HorizontalAlignment="Left"
+                                  Margin="117,29,0,0"
+                                  VerticalAlignment="Top"
+                                  Tag="3"
+                                  Foreground="{DynamicResource Foreground}" />
+                        <CheckBox x:Name="hashOptSHA3"
+                                  Content="SHA-384"
+                                  HorizontalAlignment="Left"
+                                  Margin="117,49,0,0"
+                                  VerticalAlignment="Top"
+                                  Tag="4"
+                                  Foreground="{DynamicResource Foreground}" />
+                        <CheckBox x:Name="hashOptSHA4"
+                                  Content="SHA-512"
+                                  HorizontalAlignment="Left"
+                                  Margin="117,70,0,0"
+                                  VerticalAlignment="Top"
+                                  Tag="5"
+                                  Foreground="{DynamicResource Foreground}" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="mainTabCompare"
+                     Header="{DynamicResource #H.2#}"
+                     HorizontalAlignment="Left"
+                     AllowDrop="False"
+                     IsTabStop="False">
+                <Grid AllowDrop="True">
+                    <Label AllowDrop="True"
+                           Content="{DynamicResource #S.1E#}"
+                           HorizontalAlignment="Left"
+                           Margin="9,2,0,0"
+                           VerticalAlignment="Top"
+                           DragEnter="Label_DragEnter"
+                           Drop="Label_Drop"
+                           Foreground="{DynamicResource Foreground}" />
+                    <Label AllowDrop="True"
+                           Content="{DynamicResource #S.14#}"
+                           HorizontalAlignment="Left"
+                           Margin="9,55,0,0"
+                           VerticalAlignment="Top"
+                           DragEnter="SecondComp_DragEnter"
+                           Drop="SecondComp_Drop"
+                           Foreground="{DynamicResource Foreground}" />
+                    <TextBox x:Name="diffInPath"
+                             Margin="14,28,71,0"
+                             Text=""
+                             VerticalAlignment="Top"
+                             Height="24"
+                             VerticalContentAlignment="Center"
+                             BorderBrush="#FFABADB3"
+                             SelectionBrush="#FF3399FF"
+                             Foreground="Black"
+                             TextChanged="diffInPath_TextChanged" />
+                    <Button x:Name="diffInBrowse"
+                            Content="{DynamicResource #B.B#}"
+                            HorizontalAlignment="Right"
+                            Height="24"
+                            Margin="0,28,10,0"
+                            VerticalAlignment="Top"
+                            Width="56"
+                            FontSize="11"
+                            Click="diffInBrowse_Click"
+                            BorderThickness="1" />
+                    <TextBox x:Name="diffOutPath"
+                             Margin="14,81,71,0"
+                             Text=""
+                             VerticalAlignment="Top"
+                             Height="24"
+                             VerticalContentAlignment="Center"
+                             BorderBrush="#FFABADB3"
+                             SelectionBrush="#FF3399FF"
+                             Foreground="Black"
+                             TextChanged="diffOutPath_TextChanged" />
+                    <Button x:Name="diffOutBrowse"
+                            Content="{DynamicResource #B.B#}"
+                            HorizontalAlignment="Right"
+                            Height="24"
+                            Margin="0,81,10,0"
+                            VerticalAlignment="Top"
+                            Width="56"
+                            FontSize="11"
+                            Click="diffOutBrowse_Click"
+                            BorderThickness="1" />
+                    <Button x:Name="diffStart"
+                            Content="{DynamicResource #B.4#}"
+                            Margin="0,0,10,10"
+                            Click="diffStart_Click"
+                            HorizontalAlignment="Right"
+                            Height="58"
+                            Width="128"
+                            VerticalAlignment="Bottom"
+                            BorderThickness="1" />
+                    <Button x:Name="diffOpenOutDir"
+                            Content="{DynamicResource #B.6#}"
+                            HorizontalAlignment="Left"
+                            Height="20"
+                            Margin="10,0,0,35"
+                            VerticalAlignment="Bottom"
+                            Width="139"
+                            BorderThickness="1"
+                            RenderTransformOrigin="0.475,0"
+                            FontSize="11"
+                            IsEnabled="False"
+                            Click="diffOpenOutDir_Click" />
+                    <Button x:Name="diffViewSum"
+                            Content="{DynamicResource #B.8#}"
+                            HorizontalAlignment="Left"
+                            Margin="10,0,0,10"
+                            Width="139"
+                            BorderThickness="1"
+                            RenderTransformOrigin="0.475,0"
+                            IsEnabled="False"
+                            Height="20"
+                            VerticalAlignment="Bottom"
+                            FontSize="11"
+                            Click="diffViewSum_Click" />
+                    <Label x:Name="diffInSize"
+                           Content="No File"
+                           HorizontalAlignment="Right"
+                           Margin="0,2,71,0"
+                           VerticalAlignment="Top"
+                           HorizontalContentAlignment="Right"
+                           Opacity="0.2" />
+                    <Label x:Name="diffOutSize"
+                           Content="No File"
+                           HorizontalAlignment="Right"
+                           Margin="0,55,71,0"
+                           VerticalAlignment="Top"
+                           HorizontalContentAlignment="Right"
+                           Opacity="0.2" />
+                    <Label Content="{DynamicResource #S.13#}"
+                           HorizontalAlignment="Left"
+                           Margin="10,120,0,0"
+                           VerticalAlignment="Top"
+                           Height="20"
+                           Padding="1,0,5,0"
+                           Width="174"
+                           Foreground="{DynamicResource Foreground}" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="{DynamicResource #H.A#}"
+                     Visibility="Hidden">
+                <Grid OverridesDefaultStyle="True">
+                    <Button x:Name="taskCancel"
+                            Content="{DynamicResource #B.1B#}"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Width="90"
+                            Margin="0,0,10,10"
+                            Height="26"
+                            OverridesDefaultStyle="False"
+                            IsManipulationEnabled="True"
+                            BorderThickness="1" />
+                    <ProgressBar x:Name="taskChildProgress"
+                                 Height="13"
+                                 Margin="10,36,10,0"
+                                 VerticalAlignment="Top"
+                                 IsManipulationEnabled="True" />
+                    <ProgressBar x:Name="taskMainProgress"
+                                 Height="18"
+                                 Margin="10,75,10,0"
+                                 VerticalAlignment="Top"
+                                 IsManipulationEnabled="True" />
+                    <Label x:Name="taskChildStatus"
+                           Content="Child Status"
+                           HorizontalAlignment="Left"
+                           Margin="10,10,0,0"
+                           VerticalAlignment="Top"
+                           RenderTransformOrigin="0.579,0.244"
+                           Foreground="{DynamicResource Foreground}" />
+                    <Label x:Name="taskMainStatus"
+                           Content="Main Status"
+                           HorizontalAlignment="Left"
+                           Margin="10,49,0,0"
+                           VerticalAlignment="Top"
+                           RenderTransformOrigin="0.579,0.244"
+                           Foreground="{DynamicResource Foreground}" />
+                    <Label x:Name="taskProgress"
+                           Content="100 %"
+                           HorizontalAlignment="Right"
+                           Margin="0,49,10,0"
+                           VerticalAlignment="Top"
+                           RenderTransformOrigin="0.579,0.244"
+                           Foreground="{DynamicResource Foreground}" />
+                    <Label x:Name="taskSize"
+                           Content="FileSize"
+                           HorizontalAlignment="Right"
+                           Margin="0,10,10,0"
+                           VerticalAlignment="Top"
+                           RenderTransformOrigin="0.579,0.244"
+                           Foreground="{DynamicResource Foreground}" />
+                    <Label x:Name="taskElapsed"
+                           Content="Elapsed"
+                           HorizontalAlignment="Left"
+                           Margin="10,93,0,0"
+                           VerticalAlignment="Top"
+                           RenderTransformOrigin="0.579,0.244"
+                           Foreground="{DynamicResource Foreground}" />
+                    <Label x:Name="taskRemaining"
+                           Content="Remaining : Unknown"
+                           HorizontalAlignment="Right"
+                           Margin="0,93,10,0"
+                           VerticalAlignment="Top"
+                           RenderTransformOrigin="0.579,0.244"
+                           Foreground="{DynamicResource Foreground}" />
+                    <Button x:Name="taskHide"
+                            Content="{DynamicResource #B.1A#}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            Width="90"
+                            Margin="10,0,0,10"
+                            Height="26"
+                            OverridesDefaultStyle="False"
+                            IsManipulationEnabled="True"
+                            BorderThickness="1" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StatusBar x:Name="mainStatusBar"
+                   VerticalContentAlignment="Center"
+                   Grid.Row="2"
+                   Background="{DynamicResource Background}"
+                   Foreground="{DynamicResource Foreground}">
+            <StatusBarItem x:Name="siStatus"
+                           Content="{DynamicResource #S.18#}"
+                           HorizontalContentAlignment="Stretch" />
+        </StatusBar>
+        <ProgressBar x:Name="prgStatus"
+                     ValueChanged="prgStatus_ValueChanged"
+                     Grid.Row="1"
+                     Opacity="0.8"
+                     BorderThickness="0"
+                     Background="{DynamicResource BackgroundHighlighted}" />
+    </Grid>
+</Window>

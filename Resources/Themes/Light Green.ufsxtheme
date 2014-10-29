@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<theme Name="Light Green">
+
+  <!--Background-->
+  <Color Key="Background"
+                 Color="#EEEEF2" />
+  <Color Key="LightBackground"
+                 Color="#FFF7F7F7" />
+  <!--Foreground-->
+  <Color Key="Foreground"
+                 Color="#FF1E1E1E" />
+  <!--General-->
+  <Color Key="BackgroundHighlighted"
+                 Color="#FFF7F7F7" />
+  <Color Key="BorderBrushHighlighted"
+                 Color="#FFCCCEDB" />
+  <Color Key="BackgroundSelected"
+                 Color="#FF059B13" />
+  <Color Key="BorderBrushSelected"
+                 Color="#FF059B13" />
+  <Color Key="BackgroundNormal"
+                 Color="#FFEEEEF2" />
+  <Color Key="BorderBrushNormal"
+                 Color="#FFCCCEDB" />
+  <!--Text Box-->
+  <Color Key="TextBoxBackground"
+                 Color="#F6F6F6" />
+  <Color Key="TextBoxBackgroundSelected"
+                 Color="#FFFFFFFF" />
+  <!--Search Text Box-->
+  <Color Key="SearchTextForeground"
+                 Color="#FFCCCEDB" />
+  <!--Link Button-->
+  <Color Key="LinkButtonForeground"
+                 Color="#FF059B13" />
+  <Color Key="LinkButtonForegroundHighlighted"
+                 Color="#FF059B13" />
+  <!--Close Button-->
+  <Color Key="CloseButtonBackgroundHighlighted"
+                 Color="#FF39FB53" />
+  <Color Key="CloseButtonBackgroundPressed"
+                 Color="#FF087D0D" />
+  <Color Key="CloseButtonStroke"
+                 Color="#AAFFFFFF" />
+  <Color Key="CloseButtonStrokeHighlighted"
+                 Color="#FFFFFF" />
+  <!--Menu-->
+  <Color Key="MenuSeparatorBorderBrush"
+                 Color="#FFCCCEDB" />
+  <Color Key="MenuItemHighlightedBackground"
+                 Color="#C9DEF5" />
+  <Color Key="SubmenuItemBackground"
+                 Color="#F6F6F6" />
+  <Color Key="SubmenuItemBackgroundHighlighted"
+                 Color="#C9DEF5" />
+  <Color Key="MenuDisabledForeground"
+                 Color="#FFF7F7F7" />
+  <!--Scroll Bar-->
+  <Color Key="ScrollBarPageButtonBackgroundHighlighted"
+                 Color="#05FFFFFF" />
+</theme>

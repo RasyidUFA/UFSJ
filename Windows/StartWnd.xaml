@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d='http://schemas.microsoft.com/expression/blend/2008'
+        xmlns:mc='http://schemas.openxmlformats.org/markup-compatibility/2006'
+        mc:Ignorable='d'
+        x:Class="UFSJ.Windows.StartWnd"
+        Title="UFSJ"
+        Height="278.502"
+        Width="364.979"
+        ResizeMode="NoResize"
+        Topmost="True"
+        Icon="../Resources/STD.ico"
+        WindowStyle="None"
+        Background="{DynamicResource Background}"
+        Foreground="{DynamicResource Foreground}"
+        Activated="Window_Activated"
+        WindowStartupLocation="CenterScreen"
+        RenderTransformOrigin="0.5,0.5"
+        AllowsTransparency="True"
+        BorderBrush="{DynamicResource BackgroundSelected}"
+        BorderThickness="1">
+    <Window.Effect>
+        <DropShadowEffect Opacity="0.335"
+                          ShadowDepth="0"
+                          Color="#FF5ABCFF"
+                          BlurRadius="100"
+                          Direction="0"
+                          RenderingBias="Quality" />
+    </Window.Effect>
+    <Grid Background="{DynamicResource LightBackground}"
+          MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+        <Label x:Name="Titles"
+               Content="UFSJ"
+               FontSize="42"
+               FontWeight="ExtraBold"
+               FontStretch="Expanded"
+               Margin="10,10,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               RenderTransformOrigin="0.5,0.5"
+               Height="58"
+               Width="104"
+               Foreground="{DynamicResource Foreground}" />
+        <Label x:Name="Edition"
+               Content="#"
+               FontSize="28"
+               FontWeight="ExtraBold"
+               FontStretch="Expanded"
+               Margin="114,0,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Height="41"
+               Foreground="{DynamicResource Foreground}" />
+        <Label x:Name="FreeLabel"
+               Content="{DynamicResource #S.0A#}"
+               HorizontalAlignment="Left"
+               Margin="114,34,0,0"
+               VerticalAlignment="Top"
+               RenderTransformOrigin="0.5,0.5"
+               FontSize="18"
+               FontWeight="Bold"
+               Foreground="{DynamicResource Foreground}">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform x:Name="FreeTrans" />
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label x:Name="FreeLabel2"
+               Content="BETA"
+               Margin="0,18,8,0"
+               VerticalAlignment="Top"
+               FontSize="18"
+               FontWeight="Bold"
+               HorizontalAlignment="Right"
+               Width="71"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center"
+               Foreground="{DynamicResource Foreground}"
+               RenderTransformOrigin="0.5,0.5"
+               Visibility="Collapsed">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="23.309" />
+                    <TranslateTransform X="1.006"
+                                        Y="-2.334" />
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Grid Margin="50,101,50,50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120*" />
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="120*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="57*" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="57*" />
+            </Grid.RowDefinitions>
+            <Button x:Name="bSplit"
+                    Content="{DynamicResource #H.8#}"
+                    Click="bSplit_Click"
+                    HorizontalAlignment="Stretch" />
+            <Button x:Name="bJoin"
+                    Content="{DynamicResource #H.6#}"
+                    Click="bJoin_Click"
+                    Grid.Column="2"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch" />
+            <Button x:Name="bComp"
+                    Content="{DynamicResource #H.2#}"
+                    Click="bComp_Click"
+                    Grid.Row="2"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch" />
+            <Button x:Name="bCheck"
+                    Content="{DynamicResource #H.5#}"
+                    Click="bCheck_Click"
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch" />
+        </Grid>
+        <Label x:Name="About5"
+               Content="Copyright © 2014 UFASoft Technology&#xA;Temanggung, Indonesia."
+               FontSize="12"
+               FontStretch="Expanded"
+               Foreground="{DynamicResource Foreground}"
+               Height="43"
+               VerticalAlignment="Bottom"
+               Margin="6,0,4,1" />
+        <Button x:Name="bExit"
+                Content="{DynamicResource #B.17#}"
+                Click="bExit_Click"
+                Grid.Column="0"
+                Grid.Row="0"
+                Width="80"
+                HorizontalAlignment="Right"
+                Height="25"
+                VerticalAlignment="Bottom"
+                Margin="0,0,10,10" />
+        <Label x:Name="lWait"
+               Content="Please Wait...."
+               Height="25"
+               Margin="193,68,38,0"
+               VerticalAlignment="Top"
+               Foreground="{DynamicResource Foreground}"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center" />
+        <Label x:Name="AboutVersion"
+               Content="Version 1.0.6 Build 10629"
+               FontStretch="Expanded"
+               VerticalAlignment="Top"
+               Height="31"
+               Foreground="{DynamicResource Foreground}"
+               Margin='10,65,10,0'
+               VerticalContentAlignment='Center' />
+        <Image x:Name="imgUFASoft"
+               Source="/UFSJ;component/Resources/UFASoft.png"
+               Height="31"
+               VerticalAlignment="Top"
+               Margin='221,10,10,0' />
+    </Grid>
+</Window>

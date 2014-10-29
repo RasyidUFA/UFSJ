@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<theme Name="Dark Blue">
+  <!--Background-->
+  <Color Key="Background" Color="#1C1C1C"/>
+  <Color Key="LightBackground" Color="#2D2D30"/>
+
+  <!--Foreground-->
+  <Color Key="Foreground" Color="#FFFFFF"/>
+  <!--General-->
+  <Color Key="BackgroundHighlighted" Color="#54545C"/>
+  <Color Key="BorderBrushHighlighted" Color="#6A6A75"/>
+  <Color Key="BackgroundSelected" Color="#007ACC"/>
+  <Color Key="BorderBrushSelected" Color="#1C97EA"/>
+  <Color Key="BackgroundNormal" Color="#3F3F46"/>
+  <Color Key="BorderBrushNormal" Color="#54545C"/>
+
+  <!--Text Box-->
+  <Color Key="TextBoxBackground" Color="#333337"/>
+  <Color Key="TextBoxBackgroundSelected" Color="#3F3F46"/>
+
+  <!--Search Text Box-->
+  <Color Key="SearchTextForeground" Color="#999999"/>
+
+  <!--Link Button-->
+  <Color Key="LinkButtonForeground" Color="#1297FB"/>
+  <Color Key="LinkButtonForegroundHighlighted" Color="#55AAFF"/>
+
+  <!--Close Button-->
+  <Color Key="CloseButtonBackgroundHighlighted" Color="#39ADFB"/>
+  <Color Key="CloseButtonBackgroundPressed" Color="#084E7D"/>
+  <Color Key="CloseButtonStroke" Color="#AAFFFFFF"/>
+  <Color Key="CloseButtonStrokeHighlighted" Color="#FFFFFF"/>
+
+  <!--Menu-->
+  <Color Key="MenuSeparatorBorderBrush" Color="#333337"/>
+  <Color Key="MenuItemHighlightedBackground" Color="#3E3E40"/>
+  <Color Key="SubmenuItemBackground" Color="#1B1B1C"/>
+  <Color Key="SubmenuItemBackgroundHighlighted" Color="#333334"/>
+  <Color Key="MenuDisabledForeground" Color="#656565"/>
+
+  <!--Scroll Bar-->
+  <Color Key="ScrollBarPageButtonBackgroundHighlighted" Color="#05FFFFFF"/>
+</theme>

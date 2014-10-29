@@ -1,0 +1,11 @@
+﻿<UFSJ>
+  <language Name="{Name}" LCID="{langID}" Local="{Local}" langVer="{langVer}">
+    <Author>
+      <Name>{AuthorName}</Name>
+      <Contact>{AuthorSite}</Contact>
+    </Author>
+  </language>
+  <strings>
+    {Strings}
+  </strings>
+</UFSJ>
